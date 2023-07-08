@@ -3,7 +3,7 @@ import os
 import shutil
 
 # Set the target size for the resized images
-target_size = (400, 400)  # Adjust as per your requirement
+target_size = (300, 300)  # Adjust as per your requirement
 
 # Define the path to the directory containing your images
 image_dir = "/Users/nirajanpaudel17/Documents/Python/Major-Project/Web-Scrapping/images/"
@@ -32,14 +32,14 @@ for root, dirs, files in os.walk(image_dir):
             # Open the image file
             image = Image.open(image_path)
 
-            # Resize the image while maintaining the aspect ratio
-            image.thumbnail(target_size, Image.ANTIALIAS)
+            # Resize the image to the target size
+            resized_image = image.resize(target_size)
 
             # Construct the output path to save the resized image
             output_path = os.path.join(output_subdir, file)
 
             # Save the resized image to the output path, overwriting if necessary
-            image.save(output_path)
+            resized_image.save(output_path)
 
             # Print the original and resized dimensions for reference
             print(f"Resized {file}: Original Size: {image.size}, Resized Size: {target_size}")
